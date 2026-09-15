@@ -178,11 +178,13 @@ elif page == "🔍 Vulnerability Assessment":
     st.divider()
 
     # Start scan
-    if st.button("🔍 Start Local Security Scan"):
+    if st.button("Start Local Security Scan"):
 
         with st.spinner("Scanning localhost..."):
-
             scan_results = scan_localhost()
+
+        # Store results whether ports are found or not
+        st.session_state["scan_results"] = scan_results
 
         # Check results
         if not scan_results.empty:
@@ -190,61 +192,62 @@ elif page == "🔍 Vulnerability Assessment":
         else:
             st.info("No open ports found.")
 
-            st.session_state["scan_results"] = scan_results
-
-
     # Display previous scan results
     if "scan_results" in st.session_state:
 
         results = st.session_state["scan_results"]
 
-        st.subheader("📊 Scan Summary")
+        if results.empty:
+            st.info("No open ports found.")
 
-        total_ports = len(results)
+        else:
+            st.subheader("Scan Summary")
 
-        high = len(
-            results[
-                results["Severity"] == "High"
-            ]
-        )
+            total_ports = len(results)
 
-        medium = len(
-            results[
-                results["Severity"] == "Medium"
-            ]
-        )
-
-        low = len(
-            results[
-                results["Severity"] == "Low"
-            ]
-        )
-
-        col1, col2, col3, col4 = st.columns(4)
-
-        with col1:
-            st.metric(
-                "Open Ports",
-                total_ports
+            high = len(
+                results[
+                    results["Severity"] == "High"
+                ]
             )
 
-        with col2:
-            st.metric(
-                "High Risk",
-                high
+            medium = len(
+                results[
+                    results["Severity"] == "Medium"
+                ]
             )
 
-        with col3:
-            st.metric(
-                "Medium Risk",
-                medium
+            low = len(
+                results[
+                    results["Severity"] == "Low"
+                ]
             )
 
-        with col4:
-            st.metric(
-                "Low Risk",
-                low
-            )
+            col1, col2, col3, col4 = st.columns(4)
+
+            with col1:
+                st.metric(
+                    "Open Ports",
+                    total_ports
+                )
+
+            with col2:
+                st.metric(
+                    "High Risk",
+                    high
+                )
+
+            with col3:
+                st.metric(
+                    "Medium Risk",
+                    medium
+                )
+
+            with col4:
+                st.metric(
+                    "Low Risk",
+                    low
+                )
 
         st.divider()
 
