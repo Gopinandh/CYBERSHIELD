@@ -1,0 +1,6 @@
+host,port,service,severity,description,recommendation
+127.0.0.1,22,SSH,Medium,SSH service detected,Restrict SSH access where possible
+127.0.0.1,80,HTTP,Medium,HTTP service detected,Prefer HTTPS for web applications
+127.0.0.1,3306,MySQL,High,Database service detected,Restrict database access
+127.0.0.1,443,HTTPS,Low,HTTPS service detected,Maintain secure TLS configuration
+127.0.0.1,8080,Web Application,Medium,Web application service detected,Review application security configuration

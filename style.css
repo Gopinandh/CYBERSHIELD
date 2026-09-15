@@ -1,0 +1,67 @@
+/* CyberShield Main Theme */
+
+.stApp {
+    background-color: #0b1120;
+    color: #e5e7eb;
+}
+
+/* Main title */
+h1 {
+    font-weight: 700;
+    letter-spacing: 1px;
+}
+
+/* Section headings */
+h2, h3 {
+    color: #f1f5f9;
+}
+
+/* Sidebar */
+section[data-testid="stSidebar"] {
+    background-color: #111827;
+}
+
+/* Sidebar text */
+section[data-testid="stSidebar"] * {
+    color: #e5e7eb;
+}
+
+/* Metric cards */
+div[data-testid="stMetric"] {
+    background-color: #111827;
+    border: 1px solid #263244;
+    padding: 18px;
+    border-radius: 10px;
+}
+
+/* Metric labels */
+div[data-testid="stMetricLabel"] {
+    color: #94a3b8;
+}
+
+/* Metric values */
+div[data-testid="stMetricValue"] {
+    color: #f8fafc;
+}
+
+/* Buttons */
+.stButton > button {
+    border-radius: 8px;
+    font-weight: 600;
+    padding: 8px 20px;
+}
+
+/* Dataframes */
+div[data-testid="stDataFrame"] {
+    border-radius: 8px;
+}
+
+/* Information boxes */
+div[data-testid="stAlert"] {
+    border-radius: 8px;
+}
+
+/* Horizontal lines */
+hr {
+    border-color: #263244;
+}
